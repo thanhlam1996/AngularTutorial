@@ -1,0 +1,13 @@
+
+<h2 [ngStyle]="isHighlight(name.length)? evenStyle : oddStyle">Class binding and Style binding</h2>
+
+<div class="form-group">
+  <label>Full name</label>
+  <input class="form-control" placeholder="Enter Fullname" [(ngModel)]='name' #txtname>
+  <h3>Your name is: {{name}}</h3>
+  <code>{{txtname.value|json}}</code>
+</div>
+
+<div [class]="isHighlight(name.length)? 'circle': 'square'"></div>
+<div [ngClass]="isHighlight(name.length)?'circle':'square' "></div>
+<hr style="background-color: chartreuse;">

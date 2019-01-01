@@ -1,0 +1,33 @@
+<div *ngIf="isShowForm">
+  <div><input style="margin-top: 100px;" class="cl-6" placeholder="en" [(ngModel)]="txt_en"></div>
+  <div><input class="cl-6" placeholder="vn" [(ngModel)]="txt_vn"></div>
+  <button (click)="AddWord()" style="margin-top: 10px; margin-left: 120px" class="btn btn-primary">Add</button>
+</div>
+<button (click)="isShowForm=true" *ngIf="!isShowForm" style="margin-top: 10px; margin-left: 120px" class="btn btn-primary">Add</button>
+
+<br><br>
+<select [(ngModel)]="filterStatus">
+  <option value="XEMTATCA">
+    Xem tất cả
+  </option>
+  <option value="XEMDANHO">
+    Xem đã nhớ
+  </option>
+  <option value="XEMCHUANHO">
+    Xem chưa nhớ
+  </option>
+</select>
+
+<div *ngFor="let word of arrWords">
+  <div class="word" *ngIf="getShowWords(word.memorized)">
+    <h4 [ngStyle]="{color: word.memorized ? 'green' : 'red'}">
+      {{word.en}}
+    </h4>
+    <h4>{{word.vn}}</h4>
+
+    <button class="btn btn-danger" style="margin-right: 3px;" *ngIf="!word.memorized" (click)="remembered(word.id)">Đã nhớ</button>
+    <button class="btn btn-danger" (click)="removeWord(word.id)">Xóa</button>
+
+  </div>
+
+</div>

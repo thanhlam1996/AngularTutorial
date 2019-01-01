@@ -1,0 +1,13 @@
+<p *ngIf='isShow'>
+  struct works!
+</p>
+
+<button class="btn btn-primary" (click)="isShow=!isShow">Show</button>
+
+<ul>
+  <li *ngFor="let subject of arrSubjects">
+    <p>
+      {{'Langue: '+subject}}
+    </p>
+  </li>
+</ul>
